@@ -233,6 +233,32 @@
       </template>
     </OtherExample>
     <base-line title="OtherExample.vue"></base-line>
+
+    这里的写法很巧妙，奥利干了兄弟萌 (๑•̀ㅂ•́)و✧
+    <br />
+    <code>v-on:click="currentTab = tab"</code>这一句很巧妙
+    <br />
+    <code> keep-alive </code>是一个内置组件
+    <a href="https://juejin.im/post/6844903918313406472"
+      >keep-alive的深入理解和使用</a
+    >
+    <br />
+    <button
+      v-for="tab in tabs"
+      v-bind:key="tab"
+      v-bind:class="['tab-button', { active: currentTab === tab }]"
+      v-on:click="currentTab = tab"
+    >
+      {{ tab }}
+    </button>
+
+    <keep-alive>
+      <component v-bind:is="currentTabComponent" class="tab"></component>
+    </keep-alive>
+    <blockquote>
+      点击按钮→currentTab变化→btn的class变化→css变化，与此同时，计算属性依赖的变量变化，重新计算
+    </blockquote>
+    <base-line title="dynamic：TabArchive.vue+TabPost.vue"></base-line>
   </div>
 </template>
 
@@ -256,14 +282,15 @@ import FallbackContent from './components/2/FallbackContent'
 import AbbreviatedSyntaxforLoneDefaultSlot from './components/2/AbbreviatedSyntaxforLoneDefaultSlot'
 import DestructuringSlotProp from './components/2/DestructuringSlotProp'
 import OtherExample from './components/2/OtherExample'
+import TabArchive from './components/2/dynamic/TabArchive'
+import TabPost from './components/2/dynamic/TabPost'
 
 // import DynamicSlotNames from './components/2/DynamicSlotNames'
-
 
 let PropsAndDataname = "world";
 export default {
   components: {
-    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample,
+    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost,
     // DynamicSlotNames,
   },
   name: 'App',
@@ -276,6 +303,8 @@ export default {
     //  它说的是将一个JS对象传入作为data选项，vue会遍历此对象的所有property，但是在这个app中的代码我们第一行使用了：this.PropsAndDataname = PropsAndDataname;这样的写法，这就是一个表达式语句，貌似和所说的传入一个对象有所差别。
 
     return {
+      currentTab: "Post",
+      tabs: ["Post", "Archive"],
       user: {
         name: "HuiDT小麦"
       },
@@ -344,6 +373,12 @@ export default {
     handleListChange () {
       this.PropsAndDatalist.push('A', 'M');
       console.log("this.list 并没有发生变化，触发子组件更新了吗？", this.PropsAndDatalist);
+    }
+  },
+  computed: {
+    currentTabComponent: function () {
+      console.log(this.currentTab);
+      return "tab-" + this.currentTab.toLowerCase();
     }
   },
 } 
