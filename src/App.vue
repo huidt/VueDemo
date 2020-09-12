@@ -223,8 +223,13 @@
     <base-line title="DynamicSlotNames.vue"></base-line>
 
     <OtherExample>
-      <template v-slot:todo="todo">
+      <!-- <template v-slot:todo="todo">
         {{ todo }}
+      </template> -->
+      <template v-slot:todo="{ todo }">
+        <!-- <template v-slot:todo="todo"> -->
+        <span v-if="todo.isComplete">✓</span>
+        {{ todo.text }}
       </template>
     </OtherExample>
     <base-line title="OtherExample.vue"></base-line>
