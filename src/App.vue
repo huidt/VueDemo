@@ -149,16 +149,25 @@
       <template v-slot:footer>
         <p>Here's some contact info</p>
       </template>
-      <template v-slot:小婷>
-        {{ user.name }}
-        {{ user.school }}
+
+      <template v-slot:xiaoting="nameSlotUser">
+        nameSlotUser
+        {{ nameSlotUser.name }}
+        {{ nameSlotUser.school }}
       </template>
     </NameSlot>
     <BaseLine title="NameSlot.vue"></BaseLine>
 
+    <FallbackContent>
+      <template>Save</template>
+    </FallbackContent>
+    <BaseLine title="FallbackContent.vue"></BaseLine>
+
     <current-user>
       <template v-slot:CurrentUserDemo="slotProps">
-        在父组件中如何使用子组件的数据？
+        <p id="currentUser">
+          在父组件中如何使用子组件的数据？在子件中需要使用<code>v-bind:user="user2"</code>这种方式传上去，在父件中需要使用<code>v-slot:CurrentUserDemo="slotProps"</code>这种方式来接收，此处的<code>CurrentUser.vue</code>子件中slot提供了后备内容，由于父件也提供了内容所以后备内容没有被渲染出
+        </p>
         <blockquote>
           <p>firstName:{{ slotProps.user.firstName }}</p>
         </blockquote>
@@ -169,6 +178,56 @@
       </template>
     </current-user>
     <BaseLine title="CurrentUser.vue"></BaseLine>
+
+    <abbreviated-syntaxfor-lone-default-slot v-slot:default="loneSlot">
+      <blockquote>
+        当使用默认插槽时<code>v-slot:default="loneSlot"</code>
+        可以直接写在组件上，像AbbreviatedSyntaxforLoneDefaultSlot.vue这里一样
+      </blockquote>
+
+      <blockquote>
+        这种写法还可以更简单。就像假定未指明的内容对应默认插槽一样，不带参数的
+        v-slot 被假定对应默认插槽：就是直接<code>v-slot="slotProps"</code>
+      </blockquote>
+
+      {{ loneSlot.girl.totalHeigh }}
+
+      <!-- <template v-slot:other> slotProps is NOT available here </template> -->
+    </abbreviated-syntaxfor-lone-default-slot>
+    <BaseLine title="AbbreviatedSyntaxforLoneDefaultSlot.vue"></BaseLine>
+
+    <DestructuringSlotProp>
+      <template v-slot:default="{ user: person }">
+        person:↓
+        <blockquote>{{ person.midName }}</blockquote>
+      </template>
+      <template
+        v-slot:otherSlot="{ user={midName:'我是备胎，只在子件传来的prop时undefined时才出来'} }"
+      >
+        user:↓
+        <blockquote>{{ user.midName }}</blockquote>
+      </template>
+    </DestructuringSlotProp>
+    <base-line title="DestructuringSlotProp.vue"></base-line>
+
+    <!-- <DynamicSlotNames>
+      <template>
+        {{ user.name }}
+        pp
+      </template>
+    </DynamicSlotNames> -->
+    <a
+      href="https://cn.vuejs.org/v2/guide/components-slots.html#%E5%8A%A8%E6%80%81%E6%8F%92%E6%A7%BD%E5%90%8D"
+      >动态插槽名</a
+    >，没写好：
+    <base-line title="DynamicSlotNames.vue"></base-line>
+
+    <OtherExample>
+      <template v-slot:todo="todo">
+        {{ todo }}
+      </template>
+    </OtherExample>
+    <base-line title="OtherExample.vue"></base-line>
   </div>
 </template>
 
@@ -188,12 +247,19 @@ import PropsAndData from './components/2/PropsAndData'
 import NavigationLink from './components/2/NavigationLink'
 import NameSlot from './components/2/NameSlot'
 import CurrentUser from './components/2/CurrentUser'
+import FallbackContent from './components/2/FallbackContent'
+import AbbreviatedSyntaxforLoneDefaultSlot from './components/2/AbbreviatedSyntaxforLoneDefaultSlot'
+import DestructuringSlotProp from './components/2/DestructuringSlotProp'
+import OtherExample from './components/2/OtherExample'
+
+// import DynamicSlotNames from './components/2/DynamicSlotNames'
 
 
 let PropsAndDataname = "world";
 export default {
   components: {
-    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser,
+    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample,
+    // DynamicSlotNames,
   },
   name: 'App',
   data () {
@@ -296,5 +362,11 @@ export default {
 blockquote {
   background-color: beige;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+#currentUser {
+  background-color: #cfe6e9;
+}
+code {
+  font-size: 18px;
 }
 </style>

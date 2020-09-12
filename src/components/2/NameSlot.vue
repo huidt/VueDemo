@@ -10,10 +10,13 @@
     <footer>
       <slot name="footer"></slot>
     </footer>
-    <slot v-bind:user="user" name="小婷">
-      {{ user.name }}
-      {{ user.school }}
-    </slot>
+
+    <div>
+      <slot name="xiaoting" v-bind:nameSlotUser="nameSlotUser">
+        <!-- {{ user.name }}
+      {{ user.school }} -->
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -21,7 +24,7 @@
 export default {
   data () {
     return {
-      user: {
+      nameSlotUser: {
         name: "小婷同学",
         school: "HFUT"
       }
