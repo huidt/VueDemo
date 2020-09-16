@@ -259,6 +259,21 @@
       点击按钮→currentTab变化→btn的class变化→css变化，与此同时，计算属性依赖的变量变化，重新计算
     </blockquote>
     <base-line title="dynamic：TabArchive.vue+TabPost.vue"></base-line>
+
+    <Computed></Computed>
+    <base-line title="Computed.vue"></base-line>
+
+    <Watch></Watch>
+    <base-line title="Watch.vue"></base-line>
+
+    <h2>计算属性 VS 侦听属性</h2>
+    <Computed1></Computed1>
+
+    <Watch1></Watch1>
+    <base-line title="Computed1.vue ＋ Watch1.vue"></base-line>
+
+    <Watch1_pro></Watch1_pro>
+    <base-line title="Watch1_pro.vue"></base-line>
   </div>
 </template>
 
@@ -284,13 +299,20 @@ import DestructuringSlotProp from './components/2/DestructuringSlotProp'
 import OtherExample from './components/2/OtherExample'
 import TabArchive from './components/2/dynamic/TabArchive'
 import TabPost from './components/2/dynamic/TabPost'
-
 // import DynamicSlotNames from './components/2/DynamicSlotNames'
+
+// 3
+import Computed from './components/3/Computed'
+import Computed1 from './components/3/Computed1'
+import Watch from './components/3/Watch'
+import Watch1 from './components/3/Watch1'
+import Watch1_pro from './components/3/Watch1_pro'
+
 
 let PropsAndDataname = "world";
 export default {
   components: {
-    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost,
+    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost, Computed, Computed1, Watch, Watch1, Watch1_pro
     // DynamicSlotNames,
   },
   name: 'App',
