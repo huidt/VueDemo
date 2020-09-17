@@ -2,7 +2,7 @@
 
 ## 简介
 
-![](https://ythdong.gitee.io/blog_image/%E7%8E%A9%E8%B6%A3/huidt.jpg)
+![](src\assets\huidt.jpg)
 
 一些简单的demo，用来验证、测试vue学习过程中的知识点。
 
