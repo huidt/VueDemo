@@ -368,11 +368,18 @@
       }}</template></functional-button
     >
     <base-line title="FunctionalButton.js 函数式组件"></base-line>
+
+    <Directives />
+    <base-line title="Directives.vue 指令"></base-line>
+
+    <CustomerDirectives />
+    <base-line title="CustomerDirectives.vue 自定义指令"></base-line>
     <hr id="pagebottom" />
   </div>
 </template>
 
 <script>
+// import VueRouter from 'vue-router'
 import ToTheBottom from './components/1/ToTheBottom'
 import BlockQuote from './components/1/BlockQuote'
 import Props from './components/1/Props'
@@ -410,11 +417,16 @@ import TempVar from './components/4/TempVar'
 import CountdownClock from './components/4/CountdownClock'
 import CountdownClockJS from './components/4/CountdownClockJS'
 import FunctionalButton from './components/4/FunctionalButton'
+import Directives from './components/5/Directives'
+import CustomerDirectives from './components/5/CustomerDirectives'
 
 
 let PropsAndDataname = "world";
 export default {
   components: {
+    // VueRouter,
+    CustomerDirectives,
+    Directives,
     ToTheBottom,
     TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost, Computed, Computed1, Watch, Watch1, Watch1_pro, Clock, Functional, TempVar, CountdownClock, CountdownClockJS, BlockQuote, FunctionalButton,
     // DynamicSlotNames,
