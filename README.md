@@ -1,10 +1,10 @@
 # vueapp2
 
-## 概览
+## 简介
 
-![](src\assets\localhost_8080_.png)
+![](https://ythdong.gitee.io/blog_image/%E7%8E%A9%E8%B6%A3/huidt.jpg)
 
-一些简单的demo，最初用来验证vue学习过程中的知识点。
+一些简单的demo，用来验证、测试vue学习过程中的知识点。
 
 ## Project setup
 ```

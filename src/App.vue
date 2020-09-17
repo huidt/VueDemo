@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <ToTheBottom></ToTheBottom>
+
     <TodoList v-for="per in list" :item="per" :key="per" @delete="handleDelete">
       <span
         slot="prefixTcon"
@@ -234,7 +236,8 @@
     </OtherExample>
     <base-line title="OtherExample.vue"></base-line>
 
-    这里的写法很巧妙，奥利干了兄弟萌 (๑•̀ㅂ•́)و✧
+    这里的写法很巧妙，奥利干了兄弟萌
+    <span style="color: goldenrod">(๑•̀ㅂ•́)و✧</span>
     <br />
     <code>v-on:click="currentTab = tab"</code>这一句很巧妙
     <br />
@@ -270,14 +273,108 @@
     <Computed1></Computed1>
 
     <Watch1></Watch1>
+    <blockquote>
+      如何对这里的watch1进行防抖改造？清空定时器，添加定时器？√
+    </blockquote>
     <base-line title="Computed1.vue ＋ Watch1.vue"></base-line>
 
     <Watch1_pro></Watch1_pro>
+    <br />
     <base-line title="Watch1_pro.vue"></base-line>
+
+    <button @click="destroyClock = !destroyClock">
+      {{ destroyClock ? "加载时钟" : "销毁时钟" }}
+    </button>
+    <Clock v-if="!destroyClock" />
+    <base-line title="Clock.vue"></base-line>
+
+    <Functional :name="TempVarname" />
+    <base-line title="Functional.vue"></base-line>
+
+    <div class="nonymousComponent">
+      <small> 红色虚线代表函数式组件</small>
+      <TempVar
+        :var1="`hello ${TempVarname}`"
+        :var2="destroyClock ? 'hello vue' : 'hello world'"
+      >
+        <template v-slot="{ var1, var2 }">
+          <BlockQuote>
+            <template>
+              TempVar组件使用时通过v-bind（缩写）传入了两个变量，然后又在在TempVar.js返回了数据
+            </template>
+          </BlockQuote>
+          var1： {{ var1 }}
+          <br />
+          var2： {{ var2 }}
+          <BlockQuote>
+            <template>
+              在这里又使用
+              <code>template v-slot="{var1, var2}"></code>
+              接收，如果这里不接收就会报错：var1、var2未定义
+              <br />
+              两个变量成了临时变量，现在在当前template中就可以随意地使用var1和var2了</template
+            >
+          </BlockQuote>
+        </template>
+      </TempVar>
+    </div>
+    <base-line title="TempVar.js函数式组件 临时变量"></base-line>
+
+    <CountdownClock> </CountdownClock>
+    <base-line title="CountdownClock.vue"></base-line>
+
+    <div class="nonymousComponent">
+      <small>红色虚线代表函数式组件</small>
+      <br />
+      <small
+        >此处本想用函数式组件复现倒计时插件，由于模板中countTimeJS变量一直无法做到响应式，暂未成功，可能原因：<br />
+        <ul>
+          <li>函数式组件不维护响应数据</li>
+          <li>无instance实例</li>
+          <li>无生命周期</li>
+        </ul></small
+      >
+      <br />
+      <CountdownClockJS
+        :countTimeJS="countTimeToSon"
+        :startCountJS="startCountJS"
+      >
+        <template v-slot="{ countTimeJS, startCountJS }">
+          <input
+            v-show="startCountJS"
+            v-model="countTimeToSon"
+            placeholder="请输入倒计时（单位s）"
+          />
+          <!-- <button @click="startCountJS = !startCountJS"> -->
+          <button @click="startClockJS">
+            {{ startCountJS ? "开始" : "停止" }}
+          </button>
+          <br />
+          <div v-show="countTimeJS != 0" class="hahahajs">
+            s
+            {{ "距离结束还有 " + countTimeJS + " s" }}
+          </div>
+          <div id="hahahajs" v-show="!countTimeJS">GG，回家恰饭</div>
+        </template>
+      </CountdownClockJS>
+    </div>
+    <base-line title="CountdownClockJS.js 函数式组件"></base-line>
+
+    <functional-button :functionTempVar="TempVarname" @click="log"
+      >click me
+
+      <template v-slot="functionProp">{{
+        functionProp
+      }}</template></functional-button
+    >
+    <base-line title="FunctionalButton.js 函数式组件"></base-line>
+    <hr id="pagebottom" />
   </div>
 </template>
 
 <script>
+import ToTheBottom from './components/1/ToTheBottom'
+import BlockQuote from './components/1/BlockQuote'
 import Props from './components/1/Props'
 import TodoList from './components/1/TodoList'
 import BaseLine from './components/1/BaseLine.vue'
@@ -299,20 +396,27 @@ import DestructuringSlotProp from './components/2/DestructuringSlotProp'
 import OtherExample from './components/2/OtherExample'
 import TabArchive from './components/2/dynamic/TabArchive'
 import TabPost from './components/2/dynamic/TabPost'
-// import DynamicSlotNames from './components/2/DynamicSlotNames'
-
+// import DynamicSlotNames from './components/2/DynamicSlotNames'//还没写好
 // 3
 import Computed from './components/3/Computed'
 import Computed1 from './components/3/Computed1'
 import Watch from './components/3/Watch'
 import Watch1 from './components/3/Watch1'
 import Watch1_pro from './components/3/Watch1_pro'
+// 4
+import Clock from './components/4/Clock'
+import Functional from './components/4/Functional'
+import TempVar from './components/4/TempVar'
+import CountdownClock from './components/4/CountdownClock'
+import CountdownClockJS from './components/4/CountdownClockJS'
+import FunctionalButton from './components/4/FunctionalButton'
 
 
 let PropsAndDataname = "world";
 export default {
   components: {
-    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost, Computed, Computed1, Watch, Watch1, Watch1_pro
+    ToTheBottom,
+    TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost, Computed, Computed1, Watch, Watch1, Watch1_pro, Clock, Functional, TempVar, CountdownClock, CountdownClockJS, BlockQuote, FunctionalButton,
     // DynamicSlotNames,
   },
   name: 'App',
@@ -325,6 +429,8 @@ export default {
     //  它说的是将一个JS对象传入作为data选项，vue会遍历此对象的所有property，但是在这个app中的代码我们第一行使用了：this.PropsAndDataname = PropsAndDataname;这样的写法，这就是一个表达式语句，貌似和所说的传入一个对象有所差别。
 
     return {
+      destroyClock: false,
+      TempVarname: "vue",
       currentTab: "Post",
       tabs: ["Post", "Archive"],
       user: {
@@ -352,10 +458,16 @@ export default {
         name: "NOTian"
       },
       bigPropsName: "Hello World",
-      initialCounter: "HuiDT"
+      initialCounter: "HuiDT",
+      countTimeToSon: undefined,
+      startCountJS: true,
+      countTimeJS: undefined,
     }
   },
   methods: {
+    log () {
+      console.log("click");
+    },
     handleDelete (val) {
       const index = this.list.findIndex(text => text === val);
       this.list.splice(index, 1);
@@ -395,15 +507,35 @@ export default {
     handleListChange () {
       this.PropsAndDatalist.push('A', 'M');
       console.log("this.list 并没有发生变化，触发子组件更新了吗？", this.PropsAndDatalist);
-    }
+    },
+
+    startClockJS () {
+      this.countTimeJS = this.countTimeToSon;
+      this.startCountJS = !this.startCountJS;
+
+      this.clockJSInterval = setInterval(() => {
+        this.countTimeJS = Number((this.countTimeJS));
+        if (this.countTimeJS == 1) {
+          clearInterval(this.clockJSInterval);
+        }
+        this.countTimeJS--;
+      }, 1000);
+    },
   },
   computed: {
     currentTabComponent: function () {
-      console.log(this.currentTab);
       return "tab-" + this.currentTab.toLowerCase();
-    }
+    },
+
   },
-} 
+  watch: {
+    startCountJS: function () {
+      //   console.log("在侦听startCountJS");
+      //   this.startClockJS();
+    }
+  }
+}
+
 </script>
 
 <style  >
@@ -414,6 +546,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 20px;
+  margin-bottom: 170px;
 }
 .fa-user {
   border: 2px red solid;
@@ -430,5 +563,20 @@ blockquote {
 }
 code {
   font-size: 18px;
+}
+#hahahajs {
+  width: 200px;
+  height: 30px;
+  background-color: yellowgreen;
+  margin: 0 auto;
+}
+.hahahajs {
+  width: 200px;
+  height: 30px;
+  background-color: rgb(226, 206, 24);
+  margin: 6px auto;
+}
+.nonymousComponent {
+  border: 2px red dashed;
 }
 </style>

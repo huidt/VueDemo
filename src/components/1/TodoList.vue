@@ -12,7 +12,7 @@
 export default {
   data () {
     return {
-      checked: false
+      checked: true
     }
   },
   props: ['item'],
