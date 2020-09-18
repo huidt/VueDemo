@@ -374,6 +374,9 @@
 
     <CustomerDirectives />
     <base-line title="CustomerDirectives.vue 自定义指令"></base-line>
+
+    <ProvideInject></ProvideInject>
+    <base-line title="ProvideInject.vue"></base-line>
     <hr id="pagebottom" />
   </div>
 </template>
@@ -419,12 +422,15 @@ import CountdownClockJS from './components/4/CountdownClockJS'
 import FunctionalButton from './components/4/FunctionalButton'
 import Directives from './components/5/Directives'
 import CustomerDirectives from './components/5/CustomerDirectives'
+import ProvideInject from './components/6/index'
+
 
 
 let PropsAndDataname = "world";
 export default {
   components: {
     // VueRouter,
+    ProvideInject,
     CustomerDirectives,
     Directives,
     ToTheBottom,
