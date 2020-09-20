@@ -14,8 +14,6 @@ export default {
   inheritAttrs: false,
   props: ['label', 'value'],
 }
-
 </script>
 
-<style>
-</style>
+<style></style>

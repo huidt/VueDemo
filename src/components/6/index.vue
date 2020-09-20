@@ -2,8 +2,8 @@
   <div>
     <div>组件结构如下图</div>
     <img
-      width="80%"
-      src="../../assets/跨组件通信.png"
+      width="60%"
+      src="../../assets/commuication.png"
       alt="http://img.wandouip.com/crawler/article/2019424/7d0ee2c13140b1ea06c81fcfdd47f219"
     />
     <blockquote>
@@ -15,14 +15,14 @@
   </div>
 </template>
 <script>
-import ChildrenA from "./ChildrenA";
-import ChildrenA1 from "./ChildrenA_a";
+import ChildrenA from './ChildrenA'
+import ChildrenA1 from './ChildrenA_a'
 export default {
   components: {
     ChildrenA,
-    ChildrenA1
-  }
-};
+    ChildrenA1,
+  },
+}
 </script>
 <style>
 .border,
