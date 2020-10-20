@@ -2,13 +2,17 @@
   <div>
     <span>
       {{ counter }}
-      <button @click="changeFatherProp1">子件直接修改1</button>
+      <button @click="changeFatherProp1">子直接修改1</button>
+      <blockquote>
+        此处直接在子组件中修改了父组件传来的属性，vue会报错，不过也确实修改了改prop在子组件中的值，父组件中没有改变
+      </blockquote>
+      <blockquote>想一想为什么不让在子组件中直接修改？</blockquote>
       <br />
       {{ counter }}
       <button @click="changeFatherProp2">非直接修改2</button>
       <br />
       {{ counter }}
-      <button @click="changeFatherProp3">非直接修改3</button>
+      <button @click="changeFatherProp31">非直接修改3</button>
     </span>
   </div>
 </template>
@@ -41,16 +45,21 @@ export default {
   },
   methods: {
     changeFatherProp1: function () {
-      //  此处直接在子组件中修改了父组件传来的属性，会报错，不过以来修改了父组件传来的属性
+      //   此处直接在子组件中修改了父组件传来的属性，vue会报错，不过也确实修改了改prop在子组件中的值，父组件中没有改变
       this.initialCounter = "HuiDT1";
+      //   想一想为什么不让在子组件中直接修改？
 
-      // 如果你非要修改但不想报错怎么办呢？请参考Props.vue中的写法
-      // 用一个函数onChange，它在父组件中定义并且传到子组件中，然后调用发生在子组件中
-      // 这样的方法我看来可行
+      //   如果你非要修改但不想报错怎么办呢？请参考Props.vue中的写法
+      //   用一个函数onChange，它在父组件中定义并且传到子组件中（实际上传来的只是一个引用，用为JS函数是对象），然后假装调用发生在子组件中，实质上函数在父组件中被调用
 
-      // 再或者使用$emit触发一个事件直接在父组件中调用一个函数修改属性，如下changeFatherProp3
+      //   组件是可复用的 Vue 实例，就是对象
+
+      //   这样的方法我看来可行
+
+      //   再或者使用$emit触发一个事件直接在父组件中调用一个函数修改属性，如下changeFatherProp31
     },
-    changeFatherProp3: function (e) {
+    changeFatherProp31: function (e) {
+      //   这里的函数和父组件中的同名函数没有关系
       this.$emit("change", e.target.value);
     }
   }

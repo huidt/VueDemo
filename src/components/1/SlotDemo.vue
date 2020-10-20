@@ -1,6 +1,7 @@
 <template>
   <div class="SlotDemo">
     <slot />
+    <!-- 匿名插槽，或者说默认插槽 -->
     <slot name="title" />
     <slot name="item" v-bind="obj" />
   </div>

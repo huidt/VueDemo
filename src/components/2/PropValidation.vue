@@ -15,6 +15,9 @@
     propG:{{ propG }}
     <br />
     propH:{{ propH }}
+    <blockquote>
+      父组件在向子组件传递数据时最好经过验证，变量可设置默认值是ES6新引入的东西
+    </blockquote>
   </div>
 </template>
 
@@ -27,7 +30,7 @@ export default {
     // 必填的字符串
     propC: {
       type: String,
-      // 表示必填
+      //   required表示必填
       required: true
     },
     // 带有默认值的数字
@@ -38,7 +41,7 @@ export default {
     // 带有默认值的对象
     propE: {
       type: Object,
-      // 对象或数组默认值必须从一个工厂函数获取
+      //   对象或数组默认值必须从一个工厂函数获取
       default: function () {
         return { message: 'hello' }
       }

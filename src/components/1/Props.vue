@@ -1,5 +1,5 @@
 <template>
-  <div style="{ color: props.checked ? 'red' : 'blue' }">
+  <div style="{ color: props.checked ? 'red' : 'red' }">
     name：{{ name }} <br />
     type：{{ type }}
     <slot name="prefixTcon" v-bind="{ checked }"></slot>
@@ -8,6 +8,12 @@
     list：{{ list }} <br />
     isVisible：{{ isVisible }} <br />
     <button @click="handleClick">change type</button>
+    <blockquote>
+      type最开始从父组件传过去的时danger，change type会变为warning或success
+      <br />
+      这里边对父组件传给子组件的值进行了一个validator验证，这是个好习惯，如果数据验证错误则会报错：
+      [Vue warn]: Invalid prop: custom validator check failed for prop "type".
+    </blockquote>
   </div>
 </template>
 
@@ -39,6 +45,10 @@ export default {
       type: Function,
       default: () => { }
     }
+    // 传来的onChange如下
+    //  onChange (val) {
+    //   this.type = val;
+    // },
   },
   methods: {
     handleClick () {

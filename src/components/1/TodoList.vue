@@ -16,6 +16,7 @@ export default {
     }
   },
   props: ['item'],
+  //   item从使用该组件的地方传过来，'学习Vue属性', '学习Vue事件', '学习Vue插槽' 其中之一
   methods: {
     handleClick: function () {
       // console.log(this.item);
