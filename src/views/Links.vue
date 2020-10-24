@@ -3,6 +3,21 @@
     <h3>Author's Email:<a href="mailto:huidt@qq.com"> YAMA </a></h3>
     <br />
     <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
+    <img src="../assets/huidt.jpg" />
   </div>
 </template>
 

@@ -12,9 +12,8 @@
     </footer>
 
     <div>
-      <slot name="xiaoting" v-bind:nameSlotUser="nameSlotUser">
-        <!-- {{ user.name }}
-      {{ user.school }} -->
+      <slot name="xiaoting" v-bind:nameSlotUser2="nameSlotUser">
+        后备内容
       </slot>
     </div>
   </div>
@@ -25,16 +24,13 @@ export default {
   data () {
     return {
       nameSlotUser: {
-        name: "小婷同学",
+        name: "小T同学",
         school: "HFUT"
-      }
+      },
     }
   },
-  props: {
-
-  }
 }
 </script>
 
-<style>
+<style scoped>
 </style>

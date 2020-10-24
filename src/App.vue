@@ -3,6 +3,7 @@
     <ToTheBottom></ToTheBottom>
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/Login">Login</router-link>|
       <router-link to="/Jichu">基础测试</router-link> |
       <router-link to="/Zhongji">中级测试</router-link> |
       <router-link to="/links">Links</router-link>

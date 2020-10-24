@@ -4,7 +4,8 @@
     参考：https://cn.vuejs.org/v2/guide/components-slots.html#%E7%BC%96%E8%AF%91%E4%BD%9C%E7%94%A8%E5%9F%9F
   </a> -->
   <div>
-    一个不带 name 的 slot 出口会带有隐含的名字“default”。这就是默认插槽
+    一个不带 name 的 slot
+    出口会带有隐含的名字“default”。这就是默认插槽，也叫匿名插槽
     <br />
     <slot v-bind:url="url"></slot>
 

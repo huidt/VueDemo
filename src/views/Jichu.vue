@@ -122,20 +122,20 @@
     <BaseLine title="CustomizingVmodel.vue"></BaseLine>
 
     <!-- 这个组件还有些问题，没搞明白 -->
-    <BaseInput label="Hui" value="DT"></BaseInput>
+    <!-- <BaseInput label="Hui" value="DT"></BaseInput> -->
     <BaseLine title="BaseInput.vue"></BaseLine>
 
     <div>
+      <PropsAndData
+        :name="PropsAndDataname"
+        :info="PropsAndDatainfo"
+        :list="PropsAndDatalist"
+      />
       <p>
         <button @click="handleNameChange">change this.name</button>
         <button @click="handleInfoChange">change this.info</button>
         <button @click="handleListChange">change this.list</button>
       </p>
-      <PropsAndData
-        :info="PropsAndDatainfo"
-        :name="PropsAndDataname"
-        :list="PropsAndDatalist"
-      />
     </div>
     <BaseLine title="PropsAndData.vue"></BaseLine>
 
@@ -144,9 +144,8 @@
       <span class="fa fa-user">SPAN</span>
 
       <blockquote>Your Profile: {{ user.name }}</blockquote>
-      <!-- <blockquote> -->
-      Clicking me will send you to: {{ NavigationLinkSlotProps.url }}
-      <!-- </blockquote> -->
+      <a href="NavigationLinkSlotProps.url">Clicking me will send you to:</a
+      >{{ NavigationLinkSlotProps.url }}
     </navigation-link>
     <BaseLine title="NavigationLink.vue"></BaseLine>
 
@@ -157,10 +156,11 @@
 
       <p>A paragraph for the main content.</p>
       <p>And another one.</p>
-      <!-- 
-      上面两个这么些会分发到默认插槽，也可以这么写：
+
+      也可指定默认插槽，但会导致没有指明的内容被丢弃
+      <!-- 上面两个这么些会分发到默认插槽，也可以这么写：
       <template v-slot:default>
-        <p>A paragraph for the main content.</p>
+        <p>B paragraph for the main content.</p>
         <p>And another one.</p>
       </template> -->
 
@@ -168,18 +168,17 @@
         <p>Here's some contact info</p>
       </template>
 
-      <template v-slot:xiaoting="nameSlotUser">
-        nameSlotUser
-        {{ nameSlotUser.name }}
-        {{ nameSlotUser.school }}
+      <template v-slot:xiaoting="nameSlotData">
+        {{ nameSlotData.nameSlotUser2.name }}
+        {{ nameSlotData.nameSlotUser2.school }}
       </template>
     </NameSlot>
     <BaseLine title="NameSlot.vue"></BaseLine>
 
-    <FallbackContent>
+    <fallback-content>
       <template>Save</template>
-    </FallbackContent>
-    <BaseLine title="FallbackContent.vue"></BaseLine>
+    </fallback-content>
+    <baseLine title="FallbackContent.vue"></baseLine>
 
     <current-user>
       <template v-slot:CurrentUserDemo="slotProps">
@@ -472,10 +471,10 @@ export default {
       },
       PropsAndDatainfo: {},
       PropsAndDataname: PropsAndDataname,
-      // PropsAndDatainfo: {
-      //   // 为什么要把number在这里写一遍才会触发子组件更新？
-      // number: undefined
-      // },
+      //   PropsAndDatainfo: {
+      //     // 为什么要把number在这里写一遍才会触发子组件更新？
+      //     number: undefined
+      //   },
       PropsAndDatalist: [],//即便它是一个空数组，想要在之后响应式，就必须提前在data中写出来
       // vue无法检测数组的某些变化，但是这里是可以检测到的
 
@@ -536,7 +535,9 @@ export default {
     },
     handleInfoChange () {
       this.PropsAndDatainfo.number = 1;
-      // this.$set(this.PropsAndDatainfo, 'number', 1)
+
+      //   像下面这么写可以直接触发更新，而不用考虑属性是否在声明对象是注明
+      //   this.$set(this.PropsAndDatainfo, 'number', 1)
       console.log("this.info 发生了变化，触发子组件更新了吗？", this.PropsAndDatainfo);
     },
     handleListChange () {
