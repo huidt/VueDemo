@@ -213,24 +213,33 @@
     </abbreviated-syntaxfor-lone-default-slot>
     <BaseLine title="AbbreviatedSyntaxforLoneDefaultSlot.vue"></BaseLine>
 
-    <DestructuringSlotProp>
+    <destructuring-slot-prop>
       <template v-slot:default="{ user: person }">
+        <!-- <template v-slot:default="person"> -->
         person:↓
         <blockquote>{{ person.midName }}</blockquote>
       </template>
       <template
-        v-slot:otherSlot="{ user={midName:'我是备胎，只在子件传来的prop时undefined时才出来'} }"
+        v-slot:otherSlot="{ user={midName:'我是备胎，只在子件插槽传来的数据为undefined时才出来'} }"
       >
         user:↓
         <blockquote>{{ user.midName }}</blockquote>
       </template>
-    </DestructuringSlotProp>
+    </destructuring-slot-prop>
     <base-line title="DestructuringSlotProp.vue"></base-line>
 
     <DynamicSlotName>
-      <template v-slot:[moren]="dynamic_user">
-        {{ dynamic_user.user.name }}
+      <template v-slot:[mo_ren]="dynamic_user">
+        {{ dynamic_user.user.name1 }}
         pp
+        <br />
+        <button
+          class="dynamic_slot_name_btn"
+          style="border: 5px solid white"
+          @click="mo__ren"
+        >
+          开始 || 停止切换插槽名
+        </button>
       </template>
     </DynamicSlotName>
     <a
@@ -497,6 +506,15 @@ export default {
       countTimeToSon: undefined,
       startCountJS: true,
       countTimeJS: undefined,
+      mo_ren: "moren1",
+      dynamicSlotName_Bool: true,
+      clouse_arr: ['moren1', 'moren2', 'moren3'],
+      clouse_i: 0,
+      intervalID: setInterval(() => {
+        if (this.clouse_i == 3) this.clouse_i = 0;
+        this.mo_ren = this.clouse_arr[this.clouse_i];
+        this.clouse_i++;
+      }, 500),
     }
   },
   methods: {
@@ -559,6 +577,25 @@ export default {
         this.countTimeJS--;
       }, 1000);
     },
+    mo__ren () {
+      if (this.dynamicSlotName_Bool == false) {
+        this.intervalID = setInterval(() => {
+          if (this.clouse_i == 3) this.clouse_i = 0;
+          this.mo_ren = this.clouse_arr[this.clouse_i];
+          this.clouse_i++;
+        }, 500),
+          console.log("开始动态切换插槽名");
+        this.dynamicSlotName_Bool = true;
+        return;
+      }
+      if (this.dynamicSlotName_Bool == true) {
+        console.log("停止动态切换插槽名");
+        clearInterval(this.intervalID);
+        this.dynamicSlotName_Bool = false;
+        return;
+      }
+
+    }
   },
   computed: {
     currentTabComponent: function () {
@@ -619,5 +656,8 @@ code {
 }
 code {
   background-color: #cfe6e9;
+}
+button:hover {
+  cursor: pointer;
 }
 </style>

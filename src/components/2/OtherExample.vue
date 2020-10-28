@@ -1,9 +1,7 @@
 <template>
   <ul>
     <li v-for="todo in filteredTodos" v-bind:key="todo.id">
-      <!-- We have a slot for each todo, passing it the `todo` object as a slot prop. -->
       <slot name="todo" v-bind:todo="todo">
-        <!-- Fallback content -->
         这里是后备内容：{{ todo.text }}
       </slot>
     </li>
