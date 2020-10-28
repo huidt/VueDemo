@@ -178,7 +178,7 @@
     <fallback-content>
       <template>Save</template>
     </fallback-content>
-    <baseLine title="FallbackContent.vue"></baseLine>
+    <BaseLine title="FallbackContent.vue"></BaseLine>
 
     <current-user>
       <template v-slot:CurrentUserDemo="slotProps">
@@ -227,17 +227,17 @@
     </DestructuringSlotProp>
     <base-line title="DestructuringSlotProp.vue"></base-line>
 
-    <!-- <DynamicSlotNames>
-      <template>
-        {{ user.name }}
+    <DynamicSlotName>
+      <template v-slot:[moren]="dynamic_user">
+        {{ dynamic_user.user.name }}
         pp
       </template>
-    </DynamicSlotNames> -->
+    </DynamicSlotName>
     <a
       href="https://cn.vuejs.org/v2/guide/components-slots.html#%E5%8A%A8%E6%80%81%E6%8F%92%E6%A7%BD%E5%90%8D"
       >动态插槽名</a
-    >，没写好：
-    <base-line title="DynamicSlotNames.vue"></base-line>
+    >
+    <base-line title="DynamicSlotName.vue"></base-line>
 
     <OtherExample>
       <!-- <template v-slot:todo="todo">
@@ -421,7 +421,9 @@ import DestructuringSlotProp from '../components/2/DestructuringSlotProp'
 import OtherExample from '../components/2/OtherExample'
 import TabArchive from '../components/2/dynamic/TabArchive'
 import TabPost from '../components/2/dynamic/TabPost'
-// import DynamicSlotNames from '../components/2/DynamicSlotNames'//还没写好
+// import DynamicSlotName from '../components/2/DynamicSlotName'//还没写好
+
+import DynamicSlotName from '../components/2/DynamicSlotName'//还没写好
 // 3
 import Computed from '../components/3/Computed'
 import Computed1 from '../components/3/Computed1'
@@ -450,7 +452,7 @@ export default {
     Directives,
     ToTheBottom,
     TodoList, Props, BaseLine, Event, SlotDemo, OneWayDataFlow, PropValidation, NonPropAttributes, NonPropAttributes2, CustomizingVmodel, BaseInput, PropsAndData, NavigationLink, NameSlot, CurrentUser, FallbackContent, AbbreviatedSyntaxforLoneDefaultSlot, DestructuringSlotProp, OtherExample, TabArchive, TabPost, Computed, Computed1, Watch, Watch1, Watch1_pro, Clock, Functional, TempVar, CountdownClock, CountdownClockJS, BlockQuote, FunctionalButton,
-    // DynamicSlotNames,
+    DynamicSlotName,
   },
   name: 'App',
   data () {
@@ -614,5 +616,8 @@ code {
 }
 .nonymousComponent {
   border: 2px red dashed;
+}
+code {
+  background-color: #cfe6e9;
 }
 </style>
