@@ -13,13 +13,13 @@ export default {
   data () {
     return {
       filteredTodos: [{
-        text: "n1", id: 1
+        text: "n1", id: 1, isComplete: true
       }, {
-        text: "n2", id: 2
+        text: "n2", id: 2, isComplete: false
       }, {
-        text: "n3", id: 3
+        text: "n3", id: 3, isComplete: true
       }, {
-        text: "n4", id: 4
+        text: "n4", id: 4, isComplete: false
       }],
     }
   }
@@ -27,5 +27,11 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+ul {
+  border: 2px pink dashed;
+}
+li {
+  list-style: none;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>Archive component</div>
+  <div>Archive component火化</div>
 </template>
 
 <script>

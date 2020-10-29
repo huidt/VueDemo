@@ -215,6 +215,7 @@
 
     <destructuring-slot-prop>
       <template v-slot:default="{ user: person }">
+        <!-- { user: person }这种写法什么意思？user本就是子组件中dataDestr对象得别名，person有相当于user的别名 -->
         <!-- <template v-slot:default="person"> -->
         person:↓
         <blockquote>{{ person.midName }}</blockquote>
@@ -254,21 +255,28 @@
       </template> -->
       <template v-slot:todo="{ todo }">
         <!-- <template v-slot:todo="todo"> -->
-        <span v-if="todo.isComplete">✓</span>
-        {{ todo.text }}
+        <span v-if="todo.isComplete">✓ </span>
+        {{ todo.text + "  这不是后备内容" + todo.isComplete }}
       </template>
     </OtherExample>
     <base-line title="OtherExample.vue"></base-line>
 
     这里的写法很巧妙，奥利干了兄弟萌
+    <br />
+    这里的keep-alive是内置组件包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
     <span style="color: goldenrod">(๑•̀ㅂ•́)و✧</span>
     <br />
-    <code>v-on:click="currentTab = tab"</code>这一句很巧妙
+    <code>v-on:click="currentTab = tab"</code
+    >这一句很巧妙，因为渲染出了两个btn，每个btn都有个tab是一个字符串，点击使得currentTab等于当前btn上的tab字符串
     <br />
-    <code> keep-alive </code>是一个内置组件
-    <a href="https://juejin.im/post/6844903918313406472"
-      >keep-alive的深入理解和使用</a
-    >
+    <code>
+      keep-alive：
+      <a href="https://juejin.im/post/6844903918313406472"
+        >keep-alive的深入理解和使用</a
+      >
+    </code>
+
+    <br />
     <br />
     <button
       v-for="tab in tabs"
@@ -280,7 +288,10 @@
     </button>
 
     <keep-alive>
+      <!-- component 和 keep-alive 都是内置组件，参考：https://v3.cn.vuejs.org/api/built-in-components.html -->
+      <!-- 而下面的is属性就是 component 的一个属性，依 is 的值，来决定哪个组件被渲染-->
       <component v-bind:is="currentTabComponent" class="tab"></component>
+      <!-- currentTabComponent为合成的组件名 -->
     </keep-alive>
     <blockquote>
       点击按钮→currentTab变化→btn的class变化→css变化，与此同时，计算属性依赖的变量变化，重新计算
@@ -600,6 +611,7 @@ export default {
   computed: {
     currentTabComponent: function () {
       return "tab-" + this.currentTab.toLowerCase();
+      //   合成 TabArchive 和 TabPost
     },
 
   },

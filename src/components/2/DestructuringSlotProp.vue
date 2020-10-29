@@ -11,7 +11,8 @@ export default {
   data () {
     return {
       dataDestr: {
-        midName: "YAMAuiDT"
+        midName: "YAMAuiDT",
+        info: "nothing"
       }
     }
   }
