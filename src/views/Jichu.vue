@@ -284,6 +284,7 @@
       v-bind:class="['tab-button', { active: currentTab === tab }]"
       v-on:click="currentTab = tab"
     >
+      <!-- 如果currentTab === tab，则active属性存在 -->
       {{ tab }}
     </button>
 

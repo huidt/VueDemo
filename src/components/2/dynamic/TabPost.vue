@@ -61,10 +61,11 @@ export default {
 }
 
 .tab-button:hover {
-  background: #e0e0e0;
+  background: #726e6e;
 }
 
 .tab-button.active {
+  /* active 是在点击的时候显示的颜色 */
   background: #e0e0e0;
 }
 
