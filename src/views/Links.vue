@@ -2,24 +2,17 @@
   <div id="links">
     <h3>Author's Email:<a href="mailto:huidt@qq.com"> YAMA </a></h3>
     <br />
-    <ClipPath1 :imgSrc="huidtSrc"></ClipPath1>
-    <!-- <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" />
-    <img src="../assets/huidt.jpg" /> -->
+
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1>
   </div>
-</template>
+</template> 
 
 <script>
 import ClipPath1 from '../components/7/ClipPath1.vue'
@@ -29,8 +22,8 @@ export default {
   },
   data () {
     return {
-      //   huidtSrc: `../../assets/huidt.jpg`,
-      huidtSrc: `../assets/huidt.jpg`,
+      huidtSrc1: `../../assets/huidt.jpg`,
+      huidtSrc2: `../assets/huidt.jpg`,
     }
   }
 
