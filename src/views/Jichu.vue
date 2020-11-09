@@ -330,19 +330,31 @@
       >
       ），可在组件的各个生命周期执行相关操作
     </p>
-    <img width="400px" src="https://cn.vuejs.org/images/lifecycle.png" alt="" />
+    <img
+      style="border: 1px solid red"
+      width="600px"
+      src="https://cn.vuejs.org/images/lifecycle.png"
+      alt=""
+    />
     <base-line title="Clock.vue"></base-line>
 
+    <p>
+      给name绑定TempVarname属性（字符串vue），再传给Functional组件，因为Functional组件接受的props是一个对象，所以展示出来就成了对象
+    </p>
     <Functional :name="TempVarname" />
     <base-line title="Functional.vue"></base-line>
 
     <div class="nonymousComponent">
-      <small> 红色虚线代表函数式组件</small>
+      <code><small>红色虚线代表函数式组件</small></code>
+      <button @click="destroyClock = !destroyClock">
+        {{ destroyClock ? "加载时钟" : "销毁时钟" }}
+      </button>
       <TempVar
         :var1="`hello ${TempVarname}`"
         :var2="destroyClock ? 'hello vue' : 'hello world'"
       >
         <template v-slot="{ var1, var2 }">
+          <!-- var1, var2哪里来的？被函数式组件返回回来的 -->
           <BlockQuote>
             <template>
               TempVar组件使用时通过v-bind（缩写）传入了两个变量，然后又在在TempVar.js返回了数据

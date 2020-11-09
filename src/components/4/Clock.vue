@@ -1,8 +1,11 @@
 <template>
   <div>
-    括号里是什么？（见控制台）→（{{
-      log("在\{\{\}\}中执行打印的：" + "render" + "\n所以视图中没有显示")
-    }}）这里的log就是console.log，在控制台处打印了render
+    括号里是什么？（见控制台）→<code
+      >（{{
+        log("在\{\{\}\}中执行打印的：" + "render" + "\n所以视图中没有显示")
+      }}）</code
+    >
+    这里的log就是console.log，在控制台处打印了render
     <br />
     这里是： <code>{{ now }}</code>
     <button @click="start = !start">{{ start ? "停止" : "开始" }}</button>
