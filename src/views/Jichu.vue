@@ -398,6 +398,7 @@
       >
         <template v-slot="{ countTimeJS, startCountJS }">
           <input
+            @change="testCountJS()"
             v-show="startCountJS"
             v-model="countTimeToSon"
             placeholder="请输入倒计时（单位s）"
@@ -600,6 +601,7 @@ export default {
 
     startClockJS () {
       this.countTimeJS = this.countTimeToSon;
+      console.log("countTimeJS:" + this.countTimeJS);
       this.startCountJS = !this.startCountJS;
 
       this.clockJSInterval = setInterval(() => {
@@ -608,6 +610,7 @@ export default {
           clearInterval(this.clockJSInterval);
         }
         this.countTimeJS--;
+        // 这里数据虽然在变化，但是为何不能响应式？
       }, 1000);
     },
     mo__ren () {
@@ -628,6 +631,9 @@ export default {
         return;
       }
 
+    },
+    testCountJS () {
+      console.log(this.countTimeToSon);
     }
   },
   computed: {

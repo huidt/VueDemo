@@ -22,7 +22,7 @@
 export default {
   data () {
     return {
-      countTime: undefined,
+      countTime: 0,
       startCount: true
     }
   },
