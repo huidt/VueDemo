@@ -1,7 +1,11 @@
 <template>
   <div>
     <h2>侦听属性</h2>
-    <!--$data：Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象 property 的访问。 -->
+    <code
+      >$data：Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象 property
+      的访问</code
+    >
+    <br />
     {{ $data }}
     <br />
     <button @click="() => (a += 1)">a+1</button>

@@ -4,7 +4,7 @@
       log("在\{\{\}\}中执行打印的：" + "render" + "\n所以视图中没有显示")
     }}）这里的log就是console.log，在控制台处打印了render
     <br />
-    这里是→ {{ now }}
+    这里是： <code>{{ now }}</code>
     <button @click="start = !start">{{ start ? "停止" : "开始" }}</button>
   </div>
 </template>

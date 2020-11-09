@@ -16,6 +16,7 @@ export default {
     };
   },
   watch: {
+    // 如果使用watch则需要对每个数据都进行监听
     firstName: function (val) {
       this.fullName = val + " " + this.lastName;
     },

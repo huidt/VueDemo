@@ -318,10 +318,19 @@
     <br />
     <base-line title="Watch1_pro.vue"></base-line>
 
+    <!-- 这里的写法也很巧妙 -->
+    <h2>生命周期钩子</h2>
     <button @click="destroyClock = !destroyClock">
       {{ destroyClock ? "加载时钟" : "销毁时钟" }}
     </button>
     <Clock v-if="!destroyClock" />
+    <p>
+      vue提供了这些钩子函数（<code
+        >beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、activated、deactivated、beforeDestroy、destroyed、errorCaptured</code
+      >
+      ），可在组件的各个生命周期执行相关操作
+    </p>
+    <img width="400px" src="https://cn.vuejs.org/images/lifecycle.png" alt="" />
     <base-line title="Clock.vue"></base-line>
 
     <Functional :name="TempVarname" />
