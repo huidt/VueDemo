@@ -420,7 +420,6 @@
 
     <functional-button :functionTempVar="TempVarname" @click="log"
       >click me
-
       <template v-slot="functionProp">{{
         functionProp
       }}</template></functional-button
@@ -436,6 +435,9 @@
     <ProvideInject></ProvideInject>
     <base-line title="ProvideInject.vue"></base-line>
     <!-- <hr id="pagebottom" /> -->
+
+    <ShareData></ShareData>
+    <base-line title="ShareData.vue"></base-line>
   </div>
 </template>
 
@@ -483,6 +485,7 @@ import FunctionalButton from '../components/4/FunctionalButton'
 import Directives from '../components/5/Directives'
 import CustomerDirectives from '../components/5/CustomerDirectives'
 import ProvideInject from '../components/6/index'
+import ShareData from '../components/8/index'
 
 
 
@@ -490,6 +493,7 @@ let PropsAndDataname = "world";
 export default {
   components: {
     // VueRouter,
+    ShareData,
     ProvideInject,
     CustomerDirectives,
     Directives,
