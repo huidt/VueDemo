@@ -221,7 +221,11 @@
         <blockquote>{{ person.midName }}</blockquote>
       </template>
       <template
-        v-slot:otherSlot="{ user={midName:'我是备胎，只在子件插槽传来的数据为undefined时才出来'} }"
+        v-slot:otherSlot="{
+          user = {
+            midName: '我是备胎，只在子件插槽传来的数据为undefined时才出来',
+          },
+        }"
       >
         user:↓
         <blockquote>{{ user.midName }}</blockquote>
