@@ -21,7 +21,7 @@
 export default {
   data () {
     return {
-      url: 'www.thdong.top',
+      url: 'yama.thdong.top:8080/dist',
       user: {
         name: "NavigationLink's Name"
       }

@@ -5,12 +5,12 @@
 
     <clip-path-1> </clip-path-1>
     <clip-path-1> </clip-path-1>
+    <!-- <clip-path-1> </clip-path-1>
     <clip-path-1> </clip-path-1>
     <clip-path-1> </clip-path-1>
     <clip-path-1> </clip-path-1>
     <clip-path-1> </clip-path-1>
-    <clip-path-1> </clip-path-1>
-    <clip-path-1> </clip-path-1>
+    <clip-path-1> </clip-path-1> -->
   </div>
 </template> 
 

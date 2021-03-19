@@ -68,6 +68,9 @@ const RouterConfig = {
 // const router = new VueRouter({
 //     routes
 // })
+
+
+// window.localStorage.setItem('token', "passwd");
 const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     // to为当前导航（即将要进入的） 
@@ -80,8 +83,9 @@ router.beforeEach((to, from, next) => {
     // 跳转到长页面自动回到顶端
     // window.scrollTo(0, 0);
 
+    console.log(window.localStorage.getItem('token'));
     if (window.localStorage.getItem('token')) {
-        console.log("token  " + JSON.parse(window.localStorage.getItem('token')).value);
+        console.log("token: " + window.localStorage.getItem('token'));
         next();
     } else {
         console.log("请先登录");

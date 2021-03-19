@@ -144,7 +144,7 @@
       <span class="fa fa-user">SPAN</span>
 
       <blockquote>Your Profile: {{ user.name }}</blockquote>
-      <a href="NavigationLinkSlotProps.url">Clicking me will send you to:</a
+      <a href="yama.thdong.top:8080/dist">Clicking me will send you to:</a
       >{{ NavigationLinkSlotProps.url }}
     </navigation-link>
     <BaseLine title="NavigationLink.vue"></BaseLine>

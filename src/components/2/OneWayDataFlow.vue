@@ -9,10 +9,12 @@
       <blockquote>想一想为什么不让在子组件中直接修改？</blockquote>
       <br />
       {{ counter }}
-      <button @click="changeFatherProp2">非直接修改2</button>
+      <button @click="changeFatherProp2">非直接修改2（父件传来函数）</button>
       <br />
       {{ counter }}
-      <button @click="changeFatherProp31">非直接修改3</button>
+      <button @click="changeFatherProp31">非直接修改3（借用父件函数）</button>
+      <br />
+      此处是data property： {{ counter3 }}
     </span>
   </div>
 </template>
@@ -36,11 +38,12 @@ export default {
       //  这里使用的是 data property将initialCounter作为其初始值，也可以使用计算属性，计算属性和这里有什么区别呢？
       // 当你使用这里的属性，修改initialCounter之后counter并不会在计算一遍，而计算属性每次调用都会计算一遍，因为计算属性强调的的是counter对initialCounter的依赖关系，只要依赖有所改变他都会重新计算一边
 
-      // counter: this.initialCounter
+      counter3: this.initialCounter
       // 注意不能同时使用变量属性和计算属性，会重复定义
     }
   },
   computed: {
+    //   本地定义了这么一个计算属性
     counter: function () { return this.initialCounter }
   },
   methods: {
